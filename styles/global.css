@@ -190,5 +190,15 @@ h2 {
     margin: 15px;
 }
 
+.fighting {
+    background-color: rgba(121, 2, 2, 0.801);
+    padding: 8px;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 15px;
+}
+
 
 
