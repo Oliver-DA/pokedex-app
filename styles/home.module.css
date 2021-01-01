@@ -3,7 +3,27 @@
     padding: 10px;
     border-radius: 8px;
     color: #fff;
+    text-align: center;
+    margin: 20px auto;
 
+}
+
+.header {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    font-family: 'Comfortaa', cursive;
+    border: none;
+    background-color: rgba(0, 00, 0, 0.2);
+    margin-top: 20px;
+    color: #fff;
 }
 
 .pokemonList {

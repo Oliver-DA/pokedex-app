@@ -1,5 +1,6 @@
 //Libraries
 import axios from 'axios';
+import { useState } from 'react';
 
 //Styles
 import Layout from '../components/Layout';
@@ -11,22 +12,66 @@ import Pokemon from '../components/Pokemon';
 
 export default function Home ({ pokemons }) {
 
+    //UseState
+    const [filteredPokemons, setFilterPokemons] = useState(pokemons);
+
+    //SearchPokemon function
+    const searchFn = (input) => {
+        let search = input;
+        const filteredPokemons = [];
+
+        if(search === "") {
+            return pokemons;
+        }
+
+        for (let pokemon of pokemons) {
+            
+            if (pokemon.name.includes(search.toLowerCase().trim(""))) {
+                filteredPokemons.push(pokemon)
+            }
+        }
+
+        return filteredPokemons;
+    }
+
+    //Handlers
+    const handleChange = e => {
+        setFilterPokemons(searchFn(e.target.value));
+    }
+
     return (
-        <Layout>
-            <h1 className = { styles.title }>Pokédex</h1>
+        <>
 
-            <ul className = {styles.pokemonList}>
-                {
-                    pokemons.map( (pokemon, index) => (
-                        <Pokemon
-                        key = {index}
-                        pokemon = {pokemon}
-                        pokemonUrl = {`/pokemons/${index + 1}`} />
-                    ))
-                }
-            </ul>
 
-        </Layout>
+            <Layout>
+
+            <div className = {styles.header}>
+                <h1 className = { styles.title }>
+                Pokédex
+                <form>
+                    <input
+                        className = {styles.search}
+                        type = "text"
+                        placeholder = "try typing pikachu..."
+                        onChange = { handleChange } />
+                </form>
+                </h1>
+            </div>
+                
+                { filteredPokemons.length === 0 && <h3>No pokemons were found :(</h3>}
+                <ul className = {styles.pokemonList}>
+                    {
+                        filteredPokemons.map( (pokemon, index) => (
+                            <Pokemon
+                            key = {index}
+                            pokemon = {pokemon}
+                            pokemonUrl = {`/pokemons/${pokemon.index}`} />
+                        ))
+                    }
+                </ul>
+
+            </Layout>
+        </>
     )
 }
 
@@ -43,7 +88,8 @@ export async function getStaticProps () {
 
         return {
             ...pokemon,
-            image
+            image,
+            index: (index + 1)
         }
     });
 

@@ -5,7 +5,7 @@ body {
 
 img {
     max-width: 100%;
-    width: 150px;
+    width: 125px;
 }
 
 li {
@@ -28,6 +28,10 @@ h1 {
 
 h2 {
     margin: 0;
+}
+
+input::placeholder {
+    color: #e1e1e1;
 }
 
 .grass {
@@ -192,6 +196,16 @@ h2 {
 
 .fighting {
     background-color: rgba(121, 2, 2, 0.801);
+    padding: 8px;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 15px;
+}
+
+.fairy {
+    background-color: rgb(255, 153, 170);
     padding: 8px;
     color: #fff;
     border-radius: 8px;
