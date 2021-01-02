@@ -8,9 +8,7 @@ const Pokemon = ({ pokemon, pokemonUrl}) => {
 
     return (
         <li>
-            <h3>
-                { name }
-            </h3>
+            <h3>{ name }</h3>
             <Link href = {pokemonUrl}>
                 <a><img src = {image} alt = "Pokemon Image" /></a>
             </Link>

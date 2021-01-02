@@ -31,9 +31,13 @@
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+}
+
+.pokemonList li {
+    flex-basis: calc(150px - 10px);
 }
 
 .homeButton {

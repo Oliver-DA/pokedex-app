@@ -65,7 +65,7 @@ export default function Home ({ pokemons }) {
                             <Pokemon
                             key = {index}
                             pokemon = {pokemon}
-                            pokemonUrl = {`/pokemons/${pokemon.index}`} />
+                            pokemonUrl = {`/pokemon/${pokemon.index}`} />
                         ))
                     }
                 </ul>
