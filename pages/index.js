@@ -9,7 +9,6 @@ import styles from '../styles/home.module.css';
 //Components
 import Pokemon from '../components/Pokemon';
 
-
 export default function Home ({ pokemons }) {
 
     //UseState
@@ -40,10 +39,7 @@ export default function Home ({ pokemons }) {
     }
 
     return (
-        <>
-
-
-            <Layout>
+        <Layout>
 
             <div className = {styles.header}>
                 <h1 className = { styles.title }>
@@ -57,21 +53,20 @@ export default function Home ({ pokemons }) {
                 </form>
                 </h1>
             </div>
-                
-                { filteredPokemons.length === 0 && <h3>No pokemons were found :(</h3>}
-                <ul className = {styles.pokemonList}>
-                    {
-                        filteredPokemons.map( (pokemon, index) => (
-                            <Pokemon
-                            key = {index}
-                            pokemon = {pokemon}
-                            pokemonUrl = {`/pokemon/${pokemon.index}`} />
-                        ))
-                    }
-                </ul>
+            
+            { filteredPokemons.length === 0 && <h3>No pokemons were found :(</h3> }
+            <ul className = {styles.pokemonList}>
+                {
+                    filteredPokemons.map( (pokemon, index) => (
+                        <Pokemon
+                        key = {index}
+                        pokemon = {pokemon}
+                        pokemonUrl = {`/pokemon/${pokemon.index}`} />
+                    ))
+                }
+            </ul>
 
-            </Layout>
-        </>
+        </Layout>
     )
 }
 
@@ -79,10 +74,12 @@ export async function getStaticProps () {
 
     const response = await axios("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0");
     const results = await response.data.results;
-    
+
     const pokemons = results.map( (pokemon, index) => {
+            
+        //Creating a paddedIndex to get an image for each pokemon
         let paddedIndex = index < 9 ? "00": index >= 9 && index < 99 ? "0": "";
-        paddedIndex += (index + 1)
+        paddedIndex += (index + 1);
 
         let image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedIndex}.png`;
 

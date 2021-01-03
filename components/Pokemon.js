@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Pokemon = ({ pokemon, pokemonUrl}) => {
+const Pokemon = ({ pokemon, pokemonUrl }) => {
 
     const { name, image } = pokemon;
 
@@ -12,7 +12,6 @@ const Pokemon = ({ pokemon, pokemonUrl}) => {
             <Link href = {pokemonUrl}>
                 <a><img src = {image} alt = "Pokemon Image" /></a>
             </Link>
-            
         </li>
     );
 }
